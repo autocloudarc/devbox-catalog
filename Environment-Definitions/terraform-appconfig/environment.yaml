@@ -1,17 +1,20 @@
 name: AppConfig
+version: 1.0.0
 summary: This is an App Configuration deployment using Terraform.
 description: Deploys an App Config using Terraform IaC.
+runner: "cradedev01-cef6cyaga0gud5gx.azurecr.io/ade/terraform:0.0.1"
 templatePath: main.tf
 parameters:
 - id: "name"
   name: "name"
   description: "Name of the App Config"
+  default: "appcfg-01"
   type: "string"
   required: true
 - id: "location"
   name: "location"
   description: "Location to deploy the environment resources"
-  default: "westus3"
+  default: "eastus2"
   type: "string"
 - id: "key_value_names"
   name: "key_value_names"
@@ -33,8 +36,3 @@ parameters:
   description: "Tags for the key-value resources"
   type: "object"
   required: false
-runner: Terraform
-container:
-  image: "mcr.microsoft.com/azdevcli/terraform:latest"
-  # Placeholder for custom container configuration
-  # You can customize the container image, environment variables, and other settings here
