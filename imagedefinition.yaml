@@ -6,10 +6,6 @@ tasks:
     description: Install PowerShell
     parameters:
       package: Microsoft.PowerShell
-  - name: winget
-    description: Install Azure CLI
-    parameters:
-      package: Microsoft.AzureCLI
   - name: git-clone
     description: Clone devbox-catalog repository
     parameters:
