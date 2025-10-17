@@ -1,0 +1,33 @@
+$schema: "1.0"
+name: "devbox-dbx-01"
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+tasks:
+  - name: winget
+    description: Install PowerShell
+    parameters:
+      package: Microsoft.PowerShell
+  - name: winget
+    description: Install Azure CLI
+    parameters:
+      package: Microsoft.AzureCLI
+  - name: git-clone
+    description: Clone devbox-catalog repository
+    parameters:
+      repositoryUrl: https://github.com/autocloudarc/devbox-catalog.git
+      directory: C:\Workspaces
+  - name: powershell
+    description: Create development directories
+    parameters:
+      command: New-Item -ItemType Directory -Path "C:\Workspaces\projects" -Force; New-Item -ItemType Directory -Path "C:\Workspaces\scripts" -Force; New-Item -ItemType Directory -Path "C:\Workspaces\git" -Force
+  - name: powershell
+    description: Configure Git globally
+    parameters:
+      command: git config --global user.name "Dev Box User"; git config --global user.email "devbox@example.com"; git config --global core.autocrlf true
+  - name: powershell
+    description: Install Node.js via NVM
+    parameters:
+      command: $nvmUrl = "https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe"; Invoke-WebRequest -Uri $nvmUrl -OutFile "$env:TEMP\nvm-setup.exe"; & "$env:TEMP\nvm-setup.exe"
+  - name: powershell
+    description: Enable Windows Subsystem for Linux
+    parameters:
+      command: wsl --install
