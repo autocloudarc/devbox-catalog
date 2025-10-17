@@ -18,12 +18,4 @@ tasks:
   - name: powershell
     description: Configure Git globally
     parameters:
-      command: git config --global user.name "Dev Box User"; git config --global user.email "devbox@example.com"; git config --global core.autocrlf true
-  - name: powershell
-    description: Install Node.js via NVM
-    parameters:
-      command: $nvmUrl = "https://github.com/coreybutler/nvm-windows/releases/download/1.1.11/nvm-setup.exe"; Invoke-WebRequest -Uri $nvmUrl -OutFile "$env:TEMP\nvm-setup.exe"; & "$env:TEMP\nvm-setup.exe"
-  - name: powershell
-    description: Enable Windows Subsystem for Linux
-    parameters:
-      command: wsl --install
+      command: git config --global user.name "Dev Box User"; git config --global user.email "autocloudarc@outlcook.com"; git config --global core.autocrlf true
